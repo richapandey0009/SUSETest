@@ -1,14 +1,15 @@
-After installing terraform and configuring google cloud account. We have to run application using `terraform`.
+1. User Configurable Parameters in cypress.config.js:
+    a. baseURL
+    b. Rancher Username (adminUser)
+    c. Rancher password (adminPassword)
 
-1. **terraform commands**
-  * `terraform init`
-     This command sets up the environment.
+2. Level 1: Login into Rancher UI
+    a. Test file: cypress/e2e/UI-Tests/accessRancherUI.cy.js
+    b. Re-usable code: cypress/support/loginRancherUI.js
 
-  * `terraform plan`
-     This command reports configuration will be applied.
-  
-  * `terraform apply -auto-approve`
-     This command applies configuration defined on terraform files approving automatically changes.
+3. Level 2: Login into Rancher using API
+NOTE: Instead of Go lang, I have used cypress itself
+    a. Test file: cypress/e2e/UI-Tests/accessRancherAPI.cy.js
+    b. Re-usable code: cypress/support/loginRancherAPI.js
 
-  * `terraform destroy -auto-approve`
-     Against of command above, this remove everything created.
+4. Level 3: Folder Level3 contains terraform code to create VM in gcp
